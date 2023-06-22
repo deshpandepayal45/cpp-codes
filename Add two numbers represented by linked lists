@@ -1,0 +1,82 @@
+Given two decimal numbers represented by two linked lists of size N and M respectively. The task is to return a linked list that represents the sum of these two numbers.
+For example, the number 190 will be represented by the linked list, 1->9->0->null, similarly 25 by 2->5->null. Sum of these two numbers is 190 + 25 = 215, which will be represented by 2->1->5->null. You are required to return the head of the linked list 2->1->5->null.
+
+ANS:
+class Solution
+{
+    public:
+    //Function to add two numbers represented by linked list.
+    struct Node* addTwoLists(struct Node* first, struct Node* second)
+    {
+        struct Node*  ans=NULL;
+        // code here
+        long long n=0;
+        while(first!=NULL)
+        {
+            int temp=first->data;
+            n=n*10+temp;
+            first=first->next;
+        }
+      
+        long long n1=0;
+        while(second!=NULL)
+        {
+            int temp=second->data;
+            n1=n1*10+temp;
+            second=second->next;
+        }
+       
+        
+     
+        
+        long long p=n+n1;
+        while(p!=0)
+        {
+            int rim=p%10;
+            struct Node *newn=(struct Node *)malloc(sizeof(struct Node));
+            newn->data=rim;
+            newn->next=NULL;
+            if(ans==NULL)
+            {
+                ans=newn;
+                
+            }
+            else{
+               newn->next=ans;
+               ans=newn;
+               
+            }
+            p=p/10;
+        }
+        
+        
+       
+        return ans;
+    }
+    
+};
+
+
+//{ Driver Code Starts.
+
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n, m;
+        
+        cin>>n;
+        Node* first = buildList(n);
+        
+        cin>>m;
+        Node* second = buildList(m);
+        Solution ob;
+        Node* res = ob.addTwoLists(first,second);
+        printList(res);
+    }
+    return 0;
+}
+
+// } Driver Code Ends
