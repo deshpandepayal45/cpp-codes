@@ -1,0 +1,28 @@
+//print digit using recursion
+#include <iostream>
+
+using namespace std;
+
+void PrintCount(int no,string arr[])
+{
+    if(no==0)
+    {
+        return ;
+    }
+     int digit=no%10;
+     no=no/10;
+     PrintCount(no,arr);
+     cout<<arr[digit]<<endl;
+}
+int main()
+{
+   string arr[10]={"zero","one","two","three","four","five","six","seven","eight","nine"};
+   
+   int no;
+   scanf("%d",&no);
+   
+   PrintCount(no,arr);
+   
+
+    return 0;
+}
