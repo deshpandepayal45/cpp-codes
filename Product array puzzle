@@ -1,0 +1,26 @@
+vector<long long int> productExceptSelf(vector<long long int>& nums, int n) {
+       
+       vector<long long int> ans;
+        
+        if(n==1)
+        {
+           ans.push_back(1);
+           return ans;
+        }
+        
+       for(int i=0;i<n;i++)
+       {
+            long long an=1;
+           for(int j=0;j<n;j++)
+           {
+              
+               if(i!=j)
+               {
+                   an=an*nums[j];
+                  
+               }
+           } ans.push_back(an);
+       }
+        return ans;
+    }
+};
