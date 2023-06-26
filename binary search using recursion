@@ -1,0 +1,30 @@
+int binarySearch(int start,int end,vector<int>& nums, int target)
+{
+   while(start<=end)
+    {
+        int mid=(start+end)/2;
+
+        if(nums[mid]==target)
+        {
+            return mid;
+        }
+        else if(nums[mid]>target)
+        {
+            end=mid-1;
+            binarySearch(start,end,nums,target);
+        }
+        else {
+            start=mid+1;
+             binarySearch(start,end,nums,target);
+        }
+    }
+    return -1;
+}
+
+int search(vector<int>& nums, int target) {
+    // Write Your Code Here
+    int start=0;
+    int end=nums.size()-1;
+    int ans=binarySearch(start,end,nums,target);
+     return ans;
+}
