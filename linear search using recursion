@@ -1,0 +1,47 @@
+#include <iostream>
+using namespace std;
+
+bool linearSearch(int arr[], int n, int num)
+{
+    if (n == 0)
+    {
+        return false;
+    }
+
+    if (arr[0] == num)
+    {
+        return true;
+    }
+    else
+    {
+        bool ans = linearSearch(arr + 1, n - 1, num);
+        return ans;
+    }
+}
+int main()
+{
+    int size = 0, num = 0;
+    cout << "enter the array size:\n";
+    cin >> size;
+
+    cout << "enter the number to search:\n";
+    cin >> num;
+
+    int *arr = new int(size);
+    cout << "enter array elements:\n";
+    for (int i = 0; i < size; i++)
+    {
+        cin >> arr[i];
+    }
+
+    bool ans = linearSearch(arr, size, num);
+    if (ans == 0)
+    {
+        cout << "array does not contain " << num << " element" << endl;
+    }
+    else
+    {
+        cout << "array does contain " << num << " element" << endl;
+    }
+    return 0;
+}
