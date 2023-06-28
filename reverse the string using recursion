@@ -1,0 +1,21 @@
+//reverse the string using recursion
+#include <bits/stdc++.h> 
+void reverse(string & str,int i)
+{
+	if(i==str.length()/2)
+	{
+		return;
+	}
+	int j=str.length()-1;
+	swap(str[i],str[j-i]);
+	i++;
+	reverse(str,i);
+	
+}
+string reverseString(string str)
+{
+	// Write your code here.
+	int i=0,j=str.length()-1;
+	reverse(str,i);
+   return str;
+}
