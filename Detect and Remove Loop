@@ -1,0 +1,25 @@
+Node *removeLoop(Node *head)
+{
+    Node *fat=head;
+    Node *lat=head;
+    Node *prev=head;
+
+     while(fat && fat->next)
+     {
+         prev=lat;
+         lat=lat->next;
+         fat=fat->next->next;
+         if(fat==lat) break;
+     }
+     if(fat!=lat)return head;
+     fat=head;
+     while(fat!=lat)
+     {
+         prev=lat;
+         lat=lat->next;
+         fat=fat->next;
+     }
+     prev->next=NULL;
+     return head;
+    // Write your code here.
+}
