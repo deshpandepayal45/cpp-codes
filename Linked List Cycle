@@ -1,0 +1,31 @@
+class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+        if(head==NULL || head->next==NULL)
+        {
+            return false;
+        }
+    ListNode *fat=head;
+    ListNode *lat=head;
+    ListNode *prev=head;
+
+
+    while(fat && fat->next)
+    {
+        prev=lat;
+        lat=lat->next;
+        fat=fat->next->next;
+        if(fat==lat) break;
+    }
+    if(fat!=lat) return false;
+    fat=head;
+    while(lat!=fat){
+         prev=lat;
+          lat=lat->next;
+          fat=fat->next;
+    }
+    prev->next=NULL;
+    return true;
+
+    }
+};
