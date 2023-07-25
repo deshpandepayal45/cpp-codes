@@ -1,0 +1,48 @@
+Node *revere(Node *head)
+{
+    struct Node *prev=NULL;
+    struct Node *curr=head;
+    struct Node *ford=NULL;
+    
+    while(curr!=NULL)
+    {
+        ford=curr->next;
+        curr->next=prev;
+        prev=curr;
+        curr=ford;
+    }
+    return prev;
+}
+
+
+//Function to find the data of nth node from the end of a linked list.
+class Solution{
+public:
+    int getNthFromLast(Node *head, int n)
+    {
+           // Your code here
+         
+            struct Node *temp=head;
+           int no=0;
+            while(temp!=NULL)
+            {
+                no++;
+                temp=temp->next;
+            }
+            
+            if(no<n)
+            {
+                return -1;
+            }
+           head=revere(head);
+           int cnt=1;
+            while(cnt<n)
+            {
+                head=head->next;
+                cnt++;
+            }
+            int an=head->data;
+            return an;
+    }
+};
+
