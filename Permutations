@@ -1,0 +1,27 @@
+class Solution {
+    private:
+   void done(vector<int>& nums, vector<vector<int>> &an,int ind)
+     {
+       
+         if(ind>=nums.size())
+         {
+             an.push_back(nums);
+             return ;
+         }
+
+         for(int i=ind;i<nums.size();i++)
+         {
+             swap(nums[i],nums[ind]);
+             done(nums,an,ind+1);
+             //backtracking
+             swap(nums[i],nums[ind]);
+         }
+     }
+public:
+    vector<vector<int>> permute(vector<int>& nums) {
+        vector<vector<int>> an;
+        int ind=0;
+        done(nums,an,ind);
+        return an;
+    }
+};
