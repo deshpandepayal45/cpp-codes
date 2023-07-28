@@ -1,0 +1,19 @@
+vector<int> nextSmallerElement(vector<int> &arr, int n)
+{
+    // Write your code here.
+    stack<int> p;
+    p.push(-1);
+    vector<int> an(n);
+
+    for(int i=n-1;i>=0;i--)
+    {
+        int temp=arr[i];
+         while(p.top()>=temp)
+         {
+             p.pop();
+         }
+         an[i]=p.top();
+         p.push(temp);
+    }
+    return an;
+}
